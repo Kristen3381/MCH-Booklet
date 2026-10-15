@@ -1,0 +1,69 @@
+{
+  "common": {
+    "appName": "Kitabu",
+    "appTagline": "Nakala yako ya kidijitali, sambamba na kijitabu chako cha kliniki",
+    "paperCompanionNotice": "Pochi hii ya kidijitali inasafiri nawe na kuongezea kijitabu chako halisi cha afya ya mama na mtoto. Kila mara beba kijitabu chako cha karatasi unapofika kliniki.",
+    "verifiedBy": "Imethibitishwa na {facility}",
+    "bookletPage": "Ukurasa wa {page} Kijitabu",
+    "nationalId": "Kitambulisho cha Taifa",
+    "ancNumber": "Nambari ya Daftari ya Kliniki",
+    "gestationalAge": "Ujauzito wa wiki {weeks}",
+    "edd": "Tarehe Tarajiwa ya Kujifungua (EDD): {date}",
+    "stampLabel": "IMETHIBITISHWA KITUONI",
+    "demoMark": "Data ya majaribio",
+    "actions": {
+      "view": "Tazama maelezo",
+      "share": "Shiriki rekodi",
+      "revoke": "Sitisha idhini",
+      "refresh": "Pakia upya",
+      "download": "Hifadhi nakala",
+      "takePhoto": "Piga picha karatasi ya maabara",
+      "close": "Funga"
+    }
+  },
+  "sync": {
+    "synced": "Imesasishwa kikamilifu",
+    "syncedDetail": "Rekodi zote zimehifadhiwa salama.",
+    "pending": "{count, plural, =1 {Kuna badiliko 1 linasubiri mtandao} other {Kuna mabadiliko # yanasubiri mtandao}}",
+    "pendingDetail": "Imehifadhiwa kwenye simu yako. Itajisawazisha mara tu intaneti itakapopatikana.",
+    "offline": "Hali ya bila mtandao (Offline)",
+    "offlineDetail": "Unaweza kutazama rekodi zako zote na kadi ya dharura hata bila mtandao wa data."
+  },
+  "emergencyCard": {
+    "title": "Kadi Muhimu ya Dharura ya Afya",
+    "subtitle": "Inapatikana wakati wote bila mtandao kwa ajili ya wahudumu wa dharura",
+    "bloodGroup": "Kundi la Damu",
+    "allergies": "Mzio / Vizio Vinavyojulikana (Allergies)",
+    "conditions": "Hali za Kudumu za Kiafya",
+    "emergencyContact": "Mtu wa Karibu wa Kupigiwa Simu",
+    "immediateAction": "Ukiona damu inatoka, maumivu makali ya kichwa, au degedege, fika mara moja kwenye kituo cha afya kilicho karibu zaidi."
+  },
+  "ancJourney": {
+    "title": "Safari Yako ya Ujauzito",
+    "subtitle": "Kliniki 8 zinazopendekezwa kwa usalama wa mama na mtoto (Ratiba ya Kitaifa)",
+    "contact": "Kliniki ya {number}",
+    "statusDone": "Imekamilika",
+    "statusNext": "Kliniki ijayo",
+    "statusUpcoming": "Kliniki zijazo",
+    "facility": "Kituo: {name}"
+  },
+  "ledger": {
+    "vitalsTitle": "Daftari la Vipimo vya Ujauzito (Vitals)",
+    "medicationsTitle": "Dawa na Virutubisho Vilivyopeanwa",
+    "labTitle": "Vipimo vya Maabara na Uchunguzi",
+    "testName": "Kipimo",
+    "result": "Matokeo",
+    "standardRange": "Kiwango cha Kawaida",
+    "dateRecorded": "Tarehe",
+    "recordedBy": "Mhudumu Aliyerekodi",
+    "adherence": "Kunywa kila siku"
+  },
+  "sharing": {
+    "title": "Idhini ya Faragha kwa Wahudumu",
+    "description": "Wewe ndiye mwenye rekodi hizi. Chagua ni daktari au kliniki gani anayeweza kuona vipimo vyako, picha za ultrasound, au historia ya kliniki.",
+    "activeConsent": "Idhini Imetolewa",
+    "revokedConsent": "Idhini Imesitishwa",
+    "researchConsent": "Mchango wa data isiyo na jina kwa tafiti za afya ya mama",
+    "researchNotice": "Inasaidia kuboresha huduma za afya ya uzazi nchini Kenya bila kutaja jina au utambulisho wako."
+  }
+}

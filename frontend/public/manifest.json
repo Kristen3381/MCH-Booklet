@@ -1,0 +1,19 @@
+{
+  "name": "Afya ya Mama na Mtoto (MCH Digital Companion)",
+  "short_name": "MCH Companion",
+  "description": "Your digital copy alongside your maternal and child health booklet.",
+  "start_url": "/app",
+  "display": "standalone",
+  "background_color": "#F6EFE3",
+  "theme_color": "#1E4D3B",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "lang": "en-KE",
+  "orientation": "portrait-primary",
+  "categories": ["medical", "health"]
+}

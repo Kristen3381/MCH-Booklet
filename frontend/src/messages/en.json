@@ -1,0 +1,69 @@
+{
+  "common": {
+    "appName": "Kitabu",
+    "appTagline": "Your digital copy, alongside your clinic booklet",
+    "paperCompanionNotice": "This digital wallet travels with you and supplements your physical clinic booklet. Always carry your paper booklet to clinic appointments.",
+    "verifiedBy": "Confirmed by {facility}",
+    "bookletPage": "Booklet Page {page}",
+    "nationalId": "National ID",
+    "ancNumber": "Clinic Register #",
+    "gestationalAge": "{weeks} weeks gestation",
+    "edd": "Expected Delivery Date: {date}",
+    "stampLabel": "FACILITY CONFIRMED",
+    "demoMark": "Demo data",
+    "actions": {
+      "view": "View details",
+      "share": "Share record",
+      "revoke": "Revoke access",
+      "refresh": "Refresh",
+      "download": "Save copy",
+      "takePhoto": "Photograph lab slip",
+      "close": "Close"
+    }
+  },
+  "sync": {
+    "synced": "Up to date",
+    "syncedDetail": "All records are securely backed up.",
+    "pending": "{count, plural, =1 {1 update waiting} other {# updates waiting}}",
+    "pendingDetail": "Saved on your phone. Will synchronize automatically when network connects.",
+    "offline": "Offline mode",
+    "offlineDetail": "You have full access to your saved clinic records and emergency card without internet."
+  },
+  "emergencyCard": {
+    "title": "Critical Emergency Health Card",
+    "subtitle": "Always available offline for emergency medical responders",
+    "bloodGroup": "Blood Group",
+    "allergies": "Known Allergies",
+    "conditions": "Chronic Conditions",
+    "emergencyContact": "Emergency Next of Kin",
+    "immediateAction": "In severe bleeding, severe headache, or convulsions, go to the nearest maternity facility immediately."
+  },
+  "ancJourney": {
+    "title": "Your Pregnancy Journey",
+    "subtitle": "8 recommended contacts for a safe mother and baby (National Schedule)",
+    "contact": "Contact {number}",
+    "statusDone": "Completed",
+    "statusNext": "Next appointment",
+    "statusUpcoming": "Upcoming",
+    "facility": "Facility: {name}"
+  },
+  "ledger": {
+    "vitalsTitle": "Antenatal Observations Register",
+    "medicationsTitle": "Prescribed & Supplementary Medications",
+    "labTitle": "Diagnostic & Laboratory Investigations",
+    "testName": "Investigation",
+    "result": "Result",
+    "standardRange": "Normal Range",
+    "dateRecorded": "Date",
+    "recordedBy": "Recorded By",
+    "adherence": "Daily Intake"
+  },
+  "sharing": {
+    "title": "Granular Provider Consent",
+    "description": "You own this record. Choose exactly which clinic or doctor can view your lab slips, ultrasound notes, and visit history.",
+    "activeConsent": "Access Granted",
+    "revokedConsent": "Access Revoked",
+    "researchConsent": "De-identified maternal research contribution",
+    "researchNotice": "Helps improve maternal health programs across Kenya without revealing your name or identity."
+  }
+}
