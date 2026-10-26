@@ -29,7 +29,7 @@ The palette is derived from authentic Kenyan clinic cardstock, physical rubber-s
 | **`Paper`** | `#F6EFE3` | Primary background canvas | N/A (Canvas) | Base |
 | **`Ink`** | `#1F2A24` | Primary text, hairline rules | **12.1:1** | **AAA Pass** |
 | **`Forest`** | `#1E4D3B` | Primary brand anchor, verified checkmarks | **7.9:1** | **AAA Pass** |
-| **`Terracotta`** | `#C4572F` | Inked stamps, large headlines ($\ge 24$px), icons | **3.9:1** | **AA Large/UI Pass** |
+| **`Terracotta`** | `#C4572F` | Inked stamps, large headlines (at least 24px), icons | **3.9:1** | **AA Large/UI Pass** |
 | **`Terracotta Body`**| `#9F3E1A` | **Body-size text**, drug allergy tags, danger alerts | **5.6:1** | **AA Normal Text Pass** |
 | **`Ochre`** | `#E0A030` | Active milestone indicators, sync highlights | **6.6:1** (vs Ink) | **AAA with Ink text** |
 | **`Ochre Body`** | `#8C5E09` | Readable warning text on paper canvas | **4.9:1** | **AA Normal Text Pass** |
@@ -78,12 +78,12 @@ The background replaces synthetic dotted matrices with authentic paper grain:
 - Optional faint double-strike ghost outline.
 - **Crisp Text Guarantee:** Lettering is rendered in a separate crisp DOM layer on top, ensuring clear legibility down to 360px viewports.
 - **Header:** `"FACILITY CONFIRMED"` (sw: `"IMETHIBITISHWA KITUONI"`).
-- **REF Line:** Font size $\ge 12$px with verified AA contrast.
+- **REF Line:** Font size at least 12px with verified AA contrast.
 - Varied rotation per instance (-2.4° to +3.1°).
 
 ### 2. `JourneyPath` (`/frontend/src/components/JourneyPath.tsx`)
 - Winding, organic SVG pregnancy path tracking 8 antenatal contacts.
-- Touch targets strictly $\ge 48\text{px}$ on all nodes.
+- Touch targets strictly at least 48px on all nodes.
 - Responsive layout wrapping smoothly on 360px screens.
 - Interactive inspection showing gestational goals, Kiswahili translation, and booklet page reference.
 
@@ -141,6 +141,6 @@ The background replaces synthetic dotted matrices with authentic paper grain:
 
 ## 7. Responsive Rules (360px Mobile First)
 
-- **Touch Targets:** Strictly $\ge 48\times 48\text{px}$ for all buttons, toggles, and journey nodes.
+- **Touch Targets:** Strictly at least 48x48px for all buttons, toggles, and journey nodes.
 - **Viewport Resilience:** No horizontal overflow at 360px width.
-- **Typography Minimums:** Body text strictly $\ge 16$px on mobile; sub-labels and REF numbers strictly $\ge 12$px.
+- **Typography Minimums:** Body text strictly at least 16px on mobile; sub-labels and REF numbers strictly at least 12px.

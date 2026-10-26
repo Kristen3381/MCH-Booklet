@@ -27,50 +27,50 @@ export function LedgerTable<T extends { id: string | number }>({
   className = "",
 }: LedgerTableProps<T>) {
   return (
-    <div className={`bg-paper-card border border-ink/15 rounded-md overflow-hidden shadow-2xs ${className}`}>
-      {/* Ledger Header Bar */}
-      <div className="bg-paper-dark/60 px-4 py-3 border-b border-ink/15 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+    <div className={`w-full ${className}`}>
+      {/* Clinic Register Section Header (Unboxed, Authentic Registry Sheet Rule) */}
+      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-2.5">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="text-[11px] font-heading font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-clay/50 text-ink border border-ink/15">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-[11px] font-tabular tracking-wider uppercase font-semibold text-ink-muted border-b border-ink/30 pb-0.5">
               {registerCode}
             </span>
           </div>
-          <h4 className="font-heading text-lg font-bold text-ink mt-1">
+          <h4 className="font-heading text-lg font-bold text-ink">
             {title}
           </h4>
           {subtitle && (
             <p className="text-xs text-ink-muted mt-0.5 font-body">{subtitle}</p>
           )}
         </div>
-        <div className="text-left sm:text-right">
+        <div className="text-left sm:text-right shrink-0">
           <span className="text-xs font-tabular text-ink-muted">
             {data.length} {data.length === 1 ? "entry" : "entries"} logged
           </span>
         </div>
       </div>
 
-      {/* Ledger Table Sheet */}
-      <div className="overflow-x-auto">
-        <table className="w-full text-left border-collapse text-sm">
+      {/* Register Ruled Sheet (Full-width horizontal lines, unboxed, lighter column headers) */}
+      <div className="w-full overflow-x-auto">
+        <table className="w-full text-left border-collapse border-t-2 border-b-2 border-ink/40 text-sm">
           <thead>
-            <tr className="border-b border-ink/20 bg-paper-dark/30 text-[11px] font-heading font-bold text-ink-muted uppercase tracking-wider">
+            <tr className="border-b border-ink/30 text-xs font-body font-normal text-ink-muted">
               {columns.map((col, idx) => (
                 <th
                   key={idx}
-                  className={`py-2.5 px-4 font-semibold ${col.className || ""}`}
+                  className={`py-2 px-3.5 font-medium text-ink-muted/90 ${col.className || ""}`}
                 >
                   {col.header}
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-ink/10 font-body">
+          <tbody className="divide-y divide-ink/20 font-body">
             {data.length === 0 ? (
               <tr>
                 <td
                   colSpan={columns.length}
-                  className="py-8 text-center text-sm text-ink-muted italic font-body"
+                  className="py-6 text-center text-sm text-ink-muted italic font-body"
                 >
                   {emptyMessage}
                 </td>
@@ -79,17 +79,21 @@ export function LedgerTable<T extends { id: string | number }>({
               data.map((item) => (
                 <tr
                   key={item.id}
-                  className="hover:bg-paper transition-colors group"
+                  className="hover:bg-ink/[0.02] transition-colors group"
                 >
                   {columns.map((col, colIdx) => (
                     <td
                       key={colIdx}
-                      className={`py-3 px-4 align-middle ${col.className || ""}`}
+                      className={`py-2.5 px-3.5 align-middle text-ink font-normal ${col.className || ""}`}
                     >
                       {col.cell
                         ? col.cell(item)
                         : col.accessorKey
-                        ? String(item[col.accessorKey] ?? "")
+                        ? (
+                          <span className="font-tabular">
+                            {String(item[col.accessorKey] ?? "")}
+                          </span>
+                        )
                         : null}
                     </td>
                   ))}

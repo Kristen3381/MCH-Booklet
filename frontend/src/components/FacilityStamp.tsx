@@ -162,7 +162,7 @@ export function FacilityStamp({
         <div
           className="flex items-center justify-center gap-1 font-heading font-extrabold uppercase tracking-widest text-[10px] leading-tight w-full pb-1 border-b"
           style={{
-            color: colorMap.largeText,
+            color: colorMap.text,
             borderColor: colorMap.border,
           }}
         >

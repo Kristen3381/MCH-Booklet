@@ -3,10 +3,12 @@
 import React from "react";
 import { SyncCheckIcon, SyncPendingIcon, CloudOfflineIcon } from "./icons";
 import { SyncState } from "../lib/api";
+import { useAppLocale, SupportedLocale } from "../lib/i18n-context";
 
 export interface SyncStatusIndicatorProps {
   state: SyncState;
   pendingCount?: number;
+  locale?: SupportedLocale;
   onTriggerSync?: () => void;
   isSyncing?: boolean;
   compact?: boolean;
@@ -16,20 +18,32 @@ export interface SyncStatusIndicatorProps {
 export function SyncStatusIndicator({
   state,
   pendingCount = 1,
+  locale: propLocale,
   onTriggerSync,
   isSyncing = false,
   compact = false,
   className = "",
 }: SyncStatusIndicatorProps) {
+  let contextLocale: SupportedLocale = "en";
+  try {
+    const appLocale = useAppLocale();
+    contextLocale = appLocale.locale;
+  } catch {
+    contextLocale = "en";
+  }
+
+  const locale = propLocale || contextLocale;
+  const isSw = locale === "sw";
+
   if (compact) {
     if (state === "synced") {
       return (
         <div
-          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-heading font-bold bg-forest-light text-forest border border-forest-border select-none ${className}`}
-          title="All records are safely backed up"
+          className={`inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-1 rounded-full text-xs font-heading font-bold bg-forest-light text-forest border border-forest-border select-none ${className}`}
+          title={isSw ? "Rekodi zote zimehifadhiwa salama" : "All records are safely backed up"}
         >
           <SyncCheckIcon size={14} className="stroke-[2.5]" />
-          <span>Synced</span>
+          <span className="hidden sm:inline">{isSw ? "Imesasishwa" : "Synced"}</span>
         </div>
       );
     }
@@ -40,40 +54,44 @@ export function SyncStatusIndicator({
           type="button"
           onClick={onTriggerSync}
           disabled={isSyncing}
-          className={`touch-target inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-heading font-bold bg-ochre-light text-ochre-dark border border-ochre-border hover:bg-ochre/25 transition-colors select-none ${className}`}
-          title="Click to sync pending records"
+          className={`touch-target inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-xs font-heading font-bold bg-ochre-light text-ochre-dark border border-ochre-border hover:bg-ochre/25 transition-colors select-none ${className}`}
+          title={isSw ? "Bonyeza ili kusawazisha taarifa zinazosubiri" : "Click to sync pending records"}
         >
           <SyncPendingIcon
             size={14}
             className={`stroke-[2.5] ${isSyncing ? "animate-spin" : ""}`}
           />
-          <span className="font-tabular">{pendingCount} Pending</span>
+          <span className="font-tabular">
+            <span className="sm:hidden">{pendingCount}</span>
+            <span className="hidden sm:inline">
+              {pendingCount} {isSw ? "Inasubiri" : "Pending"}
+            </span>
+          </span>
         </button>
       );
     }
 
     return (
       <div
-        className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-heading font-bold bg-terracotta-light text-terracotta-body border border-terracotta-border select-none ${className}`}
-        title="Offline: Saved records available locally"
+        className={`inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-1 rounded-full text-xs font-heading font-bold bg-terracotta-light text-terracotta-body border border-terracotta-border select-none ${className}`}
+        title={isSw ? "Bila mtandao: Rekodi zako zipo salama kwenye simu" : "Offline: Saved records available locally"}
       >
         <CloudOfflineIcon size={14} className="stroke-[2]" />
-        <span>Offline</span>
+        <span className="hidden sm:inline">{isSw ? "Bila Mtandao" : "Offline"}</span>
       </div>
     );
   }
 
-  // Expanded card view with nurse-like microcopy
+  // Expanded card view with single-language nurse-like microcopy
   return (
     <div
       className={`p-4 rounded-md border text-sm transition-all ${
         state === "synced"
-          ? "bg-forest-surface border-forest-border/40 text-forest-dark"
+          ? "bg-forest-surface border-forest-border/40 text-forest"
           : state === "pending"
-          ? "bg-ochre-surface border-ochre-border/50 text-ochre-dark"
+          ? "bg-ochre-surface border-ochre-border/40 text-ochre-dark"
           : "bg-terracotta-surface border-terracotta-border/40 text-terracotta-body"
       } ${className}`}
-      role="status"
     >
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-start gap-3">
@@ -99,22 +117,33 @@ export function SyncStatusIndicator({
           <div>
             <div className="flex items-center gap-2">
               <span className="font-heading font-bold text-base text-ink">
-                {state === "synced" && "Up to date / Imesasishwa"}
+                {state === "synced" && (isSw ? "Imesasishwa Kikamilifu" : "Up to date")}
                 {state === "pending" &&
-                  `${pendingCount} ${
-                    pendingCount === 1 ? "Update Waiting" : "Updates Waiting"
-                  } / Mabadiliko Yanasubiri`}
-                {state === "offline" && "Offline Mode / Hali ya Bila Mtandao"}
+                  (isSw
+                    ? `${pendingCount} ${
+                        pendingCount === 1 ? "Badiliko Linasubiri" : "Mabadiliko Yanasubiri"
+                      }`
+                    : `${pendingCount} ${
+                        pendingCount === 1 ? "Update Waiting" : "Updates Waiting"
+                      }`)}
+                {state === "offline" &&
+                  (isSw ? "Hali ya Bila Mtandao (Offline)" : "Offline Mode")}
               </span>
             </div>
 
             <p className="text-xs text-ink-muted mt-1 leading-relaxed font-body">
               {state === "synced" &&
-                "All medical records, clinic visits, and lab slips are securely backed up."}
+                (isSw
+                  ? "Rekodi zote za afya, kliniki, na maabara zimehifadhiwa salama."
+                  : "All medical records, clinic visits, and lab slips are securely backed up.")}
               {state === "pending" &&
-                "Your latest entries are saved safely on this phone. They will automatically upload when network is restored."}
+                (isSw
+                  ? "Taarifa zako za hivi punde zimehifadhiwa salama kwenye simu hii. Zitasawazishwa mara intaneti ikipatikana."
+                  : "Your latest entries are saved safely on this phone. They will automatically upload when network is restored.")}
               {state === "offline" &&
-                "No cellular connection needed. Your blood group, allergy warnings, and emergency card remain 100% accessible."}
+                (isSw
+                  ? "Hakuna intaneti inayohitajika. Kundi lako la damu, mzio, na kadi ya dharura vipo tayari wakati wote."
+                  : "No cellular connection needed. Your blood group, allergy warnings, and emergency card remain 100% accessible.")}
             </p>
           </div>
         </div>
@@ -124,9 +153,15 @@ export function SyncStatusIndicator({
             type="button"
             onClick={onTriggerSync}
             disabled={isSyncing}
-            className="touch-target px-4 py-2 rounded bg-ochre text-ink font-heading font-bold text-xs border border-ochre-dark hover:bg-ochre/80 transition-all shrink-0 self-center"
+            className="touch-target px-3.5 py-1.5 rounded-md bg-ochre text-ink border border-forest font-heading font-bold text-xs hover:bg-ochre-dark hover:text-paper transition-colors shrink-0 shadow-2xs"
           >
-            {isSyncing ? "Syncing..." : "Sync Now"}
+            {isSyncing
+              ? isSw
+                ? "Inasawazisha..."
+                : "Syncing..."
+              : isSw
+              ? "Sawazisha Sasa"
+              : "Sync Now"}
           </button>
         )}
       </div>
